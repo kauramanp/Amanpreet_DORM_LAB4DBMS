@@ -23,9 +23,17 @@ WHERE O.ORD_DATE >= '2021-10-05'
 AND O.PRICING_ID = SP.PRICING_ID
 AND SP.PRO_ID = P.PRO_ID group by P.PRO_ID;
 
+SELECT
+  P.PRO_ID, P.PRO_NAME, P.CAT_ID
+FROM Product P
+JOIN supplier_pricing
+  ON supplier_pricing.PRO_ID = P.PRO_ID
+JOIN Category
+  ON Category.CAT_ID = P.CAT_ID group by P.CAT_ID;
+
 -- 7)	Display the Id and Name of the Product ordered after “2021-10-05”.
 SELECT  P.PRO_ID, P.PRO_NAME FROM orders O, Product P, supplier_pricing SP
-WHERE O.ORD_DATE >= '2021-10-05'
+WHERE O.ORD_DATE > '2021-10-05'
 AND O.PRICING_ID = SP.PRICING_ID
 AND SP.PRO_ID = P.PRO_ID group by P.PRO_ID;
 
