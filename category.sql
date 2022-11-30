@@ -4,3 +4,5 @@ INSERT INTO category VALUES(3,"GROCERIES");
 INSERT INTO category VALUES(4,"ELECTRONICS");
 INSERT INTO category VALUES(5,"CLOTHES");
 select * from category;
+
+-- Drop table category;
