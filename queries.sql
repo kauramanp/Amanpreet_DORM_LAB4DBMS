@@ -18,13 +18,9 @@ SELECT S.* FROM supplier S WHERE S.SUPP_ID IN
 
 -- 6)Find the least expensive product from each category and 
 -- print the table with category id, name, product name and price of the product
-SELECT P.PRO_ID, P.PRO_NAME, P.CAT_ID, S.SUPP_PRICE FROM CATEGORY C, Product P, supplier_pricing SP
-WHERE O.ORD_DATE >= '2021-10-05'
-AND O.PRICING_ID = SP.PRICING_ID
-AND SP.PRO_ID = P.PRO_ID group by P.PRO_ID;
-
+SELECT MIN(SUPP_PRICE), PRO_ID FROM SUPPLIER_PRICING GROUP BY PRO_ID;
 SELECT
-  P.PRO_ID, P.PRO_NAME, P.CAT_ID
+  P.PRO_ID, P.PRO_NAME, P.CAT_ID, MIN(commission)
 FROM Product P
 JOIN supplier_pricing
   ON supplier_pricing.PRO_ID = P.PRO_ID
